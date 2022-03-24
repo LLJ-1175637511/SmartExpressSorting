@@ -37,6 +37,7 @@
     <color name="qq_blue">#00acff</color>
     <color name="tab_ripple">#B7DAF6</color>
     <color name="grey_dark">#333232</color>
-    <color name="grey">#272626</color>
+    <color name="grey">#F8F7F7</color>
+    <color name="orange">#F1B35B</color>
     <color name="half_white">#80FFFFFF</color>
 </resources>
