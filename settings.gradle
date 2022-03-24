@@ -3,6 +3,8 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://developer.huawei.com/repo/'}
     }
 }
 dependencyResolutionManagement {
@@ -11,7 +13,8 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        maven { url 'https://developer.huawei.com/repo/'}
     }
 }
-rootProject.name = "CommonLib"
+rootProject.name = "SmartExpressSorting"
 include ':app'

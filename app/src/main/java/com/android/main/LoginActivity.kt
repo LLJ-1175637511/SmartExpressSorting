@@ -11,7 +11,10 @@ class LoginActivity : IOTLoginActivity<ActivityLoginBinding>() {
 
     override fun initPermission() = arrayOf(
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        Manifest.permission.READ_EXTERNAL_STORAGE
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.CAMERA,
+        Manifest.permission.VIBRATE,
+        Manifest.permission.SEND_SMS,
     )
 
     override fun init() {

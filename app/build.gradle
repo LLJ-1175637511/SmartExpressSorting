@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android-extensions'
+    id 'kotlin-parcelize'
     id 'kotlin-kapt'
 }
 
@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.android.main"
-        minSdk 21
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -51,5 +51,7 @@ dependencies {
 
     implementation 'androidx.fragment:fragment-ktx:1.2.5'
     implementation 'androidx.activity:activity-ktx:1.1.0'
+
+    implementation 'com.huawei.hms:scanplus:1.1.1.301'
 
 }
