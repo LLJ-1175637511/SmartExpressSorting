@@ -14,12 +14,15 @@ import com.llj.baselib.save
 import com.llj.baselib.ui.IOTMainActivity
 import com.llj.baselib.utils.LogUtils
 import com.llj.baselib.utils.ToastUtils
+import java.lang.Exception
 
 class MainActivity : IOTMainActivity<ActivityMainBinding>() {
 
     override fun getLayoutId() = R.layout.activity_main
 
     private val vm by viewModels<MainVM>()
+
+    private var devState:IOTViewModel.WebSocketType ?= null
 
     override fun init() {
         super.init()
@@ -29,6 +32,7 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
 
     private fun initMainView() {
         initToolbar()
+        mDataBinding.tvNumber.text = IOTLib.getSP(RECORD_DATA).getInt(RECORD_DATA_NUMBER,16).toString()
         mDataBinding.tvScanner.setOnClickListener {
             prepareScanner()
         }
@@ -71,6 +75,7 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
 
     override fun webState(state: IOTViewModel.WebSocketType) {
         LogUtils.d(IOTLib.TAG, "state:${state.name}")
+        devState = state
     }
 
     private fun prepareScanner() {
@@ -103,7 +108,13 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
                     "E" -> 3
                     else -> -1
                 }
-                if (ids == -1) return
+                //指令错误
+                if (ids == -1) throw Exception()
+                //设备离线
+                if (devState != IOTViewModel.WebSocketType.DEVICE_ONLINE){
+                    ToastUtils.toastShort("设备离线 请重试")
+                    return
+                }
                 vm.sendOrder(locationOrder)
                 updateUI(name, ids, phoneNumber)
                 sendMessage(name, ids, phoneNumber)
