@@ -3,6 +3,7 @@ package com.android.main
 import android.Manifest
 import com.android.main.databinding.ActivityLoginBinding
 import com.llj.baselib.ui.IOTLoginActivity
+import com.llj.baselib.utils.ToastUtils
 
 
 class LoginActivity : IOTLoginActivity<ActivityLoginBinding>() {
@@ -23,7 +24,13 @@ class LoginActivity : IOTLoginActivity<ActivityLoginBinding>() {
             etUserNameLogin.setText(getUserInfo().first)
             etUserPwdLogin.setText(getUserInfo().second)
             btLogin.setOnClickListener {
-                login(etUserNameLogin.text.toString(),etUserPwdLogin.text.toString(), MainActivity::class.java)
+                val name = etUserNameLogin.text.toString()
+                val pwd = etUserPwdLogin.text.toString()
+                if (name == "nilin123" && pwd == "123456"){
+                    login(name,pwd, MainActivity::class.java)
+                }else{
+                    ToastUtils.toastShort("登陆失败")
+                }
             }
         }
     }

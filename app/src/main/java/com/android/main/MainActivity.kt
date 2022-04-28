@@ -120,6 +120,7 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
                 sendMessage(name, ids, phoneNumber)
                 LogUtils.d(IOTLib.TAG, "onActivityResult: 扫描结果为：$content")
             }.onFailure {
+                LogUtils.d("onActivityResult","error:${it.message}")
                 ToastUtils.toastShort("二维码信息有误")
             }
 
